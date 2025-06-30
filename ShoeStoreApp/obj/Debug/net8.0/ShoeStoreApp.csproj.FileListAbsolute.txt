@@ -1,0 +1,14 @@
+E:\ShoeStoreApp\ShoeStoreApp\bin\Debug\net8.0\ShoeStoreApp.exe
+E:\ShoeStoreApp\ShoeStoreApp\bin\Debug\net8.0\ShoeStoreApp.deps.json
+E:\ShoeStoreApp\ShoeStoreApp\bin\Debug\net8.0\ShoeStoreApp.runtimeconfig.json
+E:\ShoeStoreApp\ShoeStoreApp\bin\Debug\net8.0\ShoeStoreApp.dll
+E:\ShoeStoreApp\ShoeStoreApp\bin\Debug\net8.0\ShoeStoreApp.pdb
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.GeneratedMSBuildEditorConfig.editorconfig
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.AssemblyInfoInputs.cache
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.AssemblyInfo.cs
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.csproj.CoreCompileInputs.cache
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.dll
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\refint\ShoeStoreApp.dll
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.pdb
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.genruntimeconfig.cache
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ref\ShoeStoreApp.dll
