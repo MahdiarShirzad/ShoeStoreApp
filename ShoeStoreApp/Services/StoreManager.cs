@@ -4,14 +4,12 @@ namespace ShoeStoreApp.Services;
 
 public class StoreManager
 {
-    private List<Shoe> shoes = new();
+    // private List<Shoe> shoes = new();
     private User user = new() { UserId = 1, Name = "Mahdyar" };
 
-    public StoreManager()
-    {
-        shoes.Add(new Shoe { Id = 1, Brand = "Nike", Size = 42, Color = "Black", Price = 120, InStock = 5 });
-        shoes.Add(new Shoe { Id = 2, Brand = "Adidas", Size = 40, Color = "White", Price = 100, InStock = 3 });
-    }
+// inside both AdminManager and StoreManager:
+    private List<Shoe> shoes => ProductRepository.Shoes;
+
 
     public void Run()
     {
@@ -70,6 +68,8 @@ public class StoreManager
             if (selected != null)
             {
                 user.Cart.Add(new CartItem { Shoe = selected, Quantity = 1 });
+                ProductRepository.SaveProducts();  
+
                 Console.WriteLine("✅ Shoe added to cart.");
             }
             else
@@ -77,6 +77,8 @@ public class StoreManager
                 Console.WriteLine("❌ Shoe not found or out of stock.");
             }
         }
+        ProductRepository.SaveProducts();  
+
     }
 
     private void Checkout()
@@ -85,6 +87,8 @@ public class StoreManager
         foreach (var item in user.Cart)
         {
             item.Shoe.InStock -= item.Quantity;
+            ProductRepository.SaveProducts();  
+
         }
 
         ProductRepository.SaveProducts(); 

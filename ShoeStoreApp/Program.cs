@@ -1,40 +1,28 @@
-﻿using ShoeStoreApp.Models;
+﻿// Program.cs
 using ShoeStoreApp.Services;
+using ShoeStoreApp.Models;
 
 class Program
 {
     static void Main(string[] args)
     {
-        ProductRepository.LoadProducts();
+        // 1️⃣ initialize our in‑mem & text‑file data
+        ProductRepository.Initialize();
 
-        Console.WriteLine("Enter your Mode : \n1. Admin \n2. User");
-        int mode = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Enter your Mode:\n1. Admin\n2. User");
+        if (!int.TryParse(Console.ReadLine(), out int mode))
+        {
+            Console.WriteLine("Invalid choice"); return;
+        }
 
         if (mode == 1)
         {
-            Console.WriteLine("Enter the user name: ");
-            var userName = Console.ReadLine();
-            Console.WriteLine("Enter the password: ");
-            var password = Convert.ToInt32(Console.ReadLine());
-
-            if (userName == "Mahdyar" && password == 5582)
-            {
-                var admin = new AdminManager();
-                admin.Run();
-            }
-            else
-            {
-                Console.WriteLine("Username or password is wrong");
-            }
+            // … your login logic …
+            new AdminManager().Run();
         }
         else if (mode == 2)
         {
-            var store = new StoreManager();
-            store.Run();
-        }
-        else
-        {
-            Console.WriteLine("Entered invalid number!");
+            new StoreManager().Run();
         }
     }
 }

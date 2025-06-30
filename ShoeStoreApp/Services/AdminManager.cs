@@ -5,14 +5,12 @@ namespace ShoeStoreApp.Services;
 
 public class AdminManager
 {
-    private List<Shoe> shoes = new();
-    private string path = "path";
+    // private List<Shoe> shoes = new();
+    // private string path = "path";
 
-    public AdminManager()
-    {
-        shoes.Add(new Shoe { Id = 1, Brand = "Nike", Size = 42, Color = "Black", Price = 120, InStock = 5 });
-        shoes.Add(new Shoe { Id = 2, Brand = "Adidas", Size = 40, Color = "White", Price = 100, InStock = 3 });
-    }
+    // inside both AdminManager and StoreManager:
+    private List<Shoe> shoes => ProductRepository.Shoes;
+
 
     public void Run()
     {
@@ -83,7 +81,8 @@ public class AdminManager
         });
 
         ProductRepository.SaveProducts();
-        ProductRepository.SaveProducts();
+
+        // ProductRepository.SaveProducts();
         Console.WriteLine("✅ Product added.");
     }
 
@@ -102,7 +101,7 @@ public class AdminManager
         if (shoe != null)
         {
             shoes.Remove(shoe);
-            ProductRepository.SaveProducts(); // ⬅ فایل را به‌روزرسانی کن
+            ProductRepository.SaveProducts();
             Console.WriteLine("Shoe removed successfully.");
         }
 
@@ -110,6 +109,7 @@ public class AdminManager
         {
             Console.WriteLine($"Shoe not found with ID {id}");
         }
+
         ProductRepository.SaveProducts();
     }
 
@@ -155,6 +155,8 @@ public class AdminManager
                     if (double.TryParse(priceInput, out var newPrice))
                     {
                         shoe.Price = newPrice;
+
+                        ProductRepository.SaveProducts();
                         Console.WriteLine("Price updated successfully.");
                     }
                     else
@@ -170,6 +172,8 @@ public class AdminManager
                     if (Int32.TryParse(stockInput, out var newStock))
                     {
                         shoe.Price = newStock;
+
+                        ProductRepository.SaveProducts();
                         Console.WriteLine("Stock updated successfully.");
                     }
                     else
@@ -182,6 +186,7 @@ public class AdminManager
                 case 3:
                     Console.Write("Enter the new Color: ");
                     var newColor = Console.ReadLine();
+
                     if (string.IsNullOrWhiteSpace(newColor))
                     {
                         Console.WriteLine("Color cannot be empty.");
@@ -189,6 +194,8 @@ public class AdminManager
                     else
                     {
                         shoe.Color = newColor;
+                        ProductRepository.SaveProducts();
+
                         Console.WriteLine("Color updated successfully.");
                     }
 
@@ -204,6 +211,8 @@ public class AdminManager
                     else
                     {
                         shoe.Brand = newBrand;
+                        ProductRepository.SaveProducts();
+
                         Console.WriteLine("Color updated successfully.");
                     }
 
@@ -215,6 +224,8 @@ public class AdminManager
                     if (Int32.TryParse(sizeInput, out var newSize))
                     {
                         shoe.Size = newSize;
+                        ProductRepository.SaveProducts();
+
                         Console.WriteLine("Size updated successfully.");
                     }
                     else
@@ -232,6 +243,7 @@ public class AdminManager
                     break;
             }
         }
+
         ProductRepository.SaveProducts();
     }
 
