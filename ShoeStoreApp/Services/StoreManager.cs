@@ -63,21 +63,35 @@ public class StoreManager
 
     private void AddToCart()
     {
-        Console.Write("Enter shoe ID: ");
+        Console.Write("Enter Shoe ID: ");
         if (int.TryParse(Console.ReadLine(), out int shoeId))
         {
-            var selected = shoes.FirstOrDefault(s => s.Id == shoeId && s.InStock > 0);
+            var selected = ProductRepository.Shoes.FirstOrDefault(s => s.Id == shoeId && s.InStock > 0);
             if (selected != null)
             {
                 user.Cart.Add(new CartItem { Shoe = selected, Quantity = 1 });
-                Console.WriteLine("Shoe added to cart.");
+                Console.WriteLine("✅ Shoe added to cart.");
             }
             else
             {
-                Console.WriteLine("Shoe not found or out of stock.");
+                Console.WriteLine("❌ Shoe not found or out of stock.");
             }
         }
     }
+
+    private void Checkout()
+    {
+        double total = user.Cart.Sum(item => item.Shoe.Price * item.Quantity);
+        foreach (var item in user.Cart)
+        {
+            item.Shoe.InStock -= item.Quantity;
+        }
+
+        ProductRepository.SaveProducts(); // ذخیره به فایل
+        user.Cart.Clear();
+        Console.WriteLine($"✅ Payment complete. Total: {total} Toman");
+    }
+
 
     private void ShowCart()
     {
@@ -87,15 +101,5 @@ public class StoreManager
             Console.WriteLine($"{item.Shoe.Brand} - {item.Shoe.Price} x {item.Quantity}");
         }
     }
-
-    private void Checkout()
-    {
-        double total = user.Cart.Sum(item => item.Shoe.Price * item.Quantity);
-        foreach (var item in user.Cart)
-        {
-            item.Shoe.Purchase();
-        }
-        user.Cart.Clear();
-        Console.WriteLine($"Checkout completed successfully. Total amount: ${total}");
-    }
+    
 }

@@ -59,39 +59,33 @@ public class AdminManager
 
     private void AddProduct()
     {
-        Console.WriteLine("\n--- Add New Product ---");
-
-        Console.Write("Enter Brand: ");
+        Console.Write("Brand: ");
         var brand = Console.ReadLine();
-
-        Console.Write("Enter Size: ");
-        var size = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter Color: ");
+        Console.Write("Size: ");
+        int size = int.Parse(Console.ReadLine());
+        Console.Write("Color: ");
         var color = Console.ReadLine();
+        Console.Write("Price: ");
+        double price = double.Parse(Console.ReadLine());
+        Console.Write("Stock: ");
+        int stock = int.Parse(Console.ReadLine());
 
-        Console.Write("Enter Price: ");
-        var price = Convert.ToDouble(Console.ReadLine());
+        int newId = ProductRepository.Shoes.Any() ? ProductRepository.Shoes.Max(s => s.Id) + 1 : 1;
 
-        Console.Write("Enter Stock Quantity: ");
-        var stock = Convert.ToInt32(Console.ReadLine());
-
-        var newId = shoes.Count > 0 ? shoes.Max(s => s.Id) + 1 : 1;
-
-        var newShoe = new Shoe
+        ProductRepository.Shoes.Add(new Shoe
         {
             Id = newId,
             Brand = brand,
-            InStock = stock,
-            Price = price,
             Size = size,
-            Color = color
-        };
+            Color = color,
+            Price = price,
+            InStock = stock
+        });
 
-        shoes.Add(newShoe);
-        Console.WriteLine("✅ Product added successfully!");
-        Console.WriteLine($"Added Shoe: {newShoe}");
+        ProductRepository.SaveProducts();
+        Console.WriteLine("✅ Product added.");
     }
+
 
     private void RemoveProduct()
     {
@@ -107,8 +101,10 @@ public class AdminManager
         if (shoe != null)
         {
             shoes.Remove(shoe);
+            ProductRepository.SaveProducts(); // ⬅ فایل را به‌روزرسانی کن
             Console.WriteLine("Shoe removed successfully.");
         }
+
         else
         {
             Console.WriteLine($"Shoe not found with ID {id}");
@@ -164,6 +160,7 @@ public class AdminManager
                         Console.WriteLine("Invalid price.");
                     }
 
+                    ProductRepository.SaveProducts();
                     break;
                 case 2:
                     Console.WriteLine("Enter the new Stock: ");
@@ -177,6 +174,8 @@ public class AdminManager
                     {
                         Console.WriteLine("Invalid Stock.");
                     }
+
+                    ProductRepository.SaveProducts();
                     break;
                 case 3:
                     Console.Write("Enter the new Color: ");
@@ -190,6 +189,8 @@ public class AdminManager
                         shoe.Color = newColor;
                         Console.WriteLine("Color updated successfully.");
                     }
+
+                    ProductRepository.SaveProducts();
                     break;
                 case 4:
                     Console.Write("Enter the new Brand: ");
@@ -203,6 +204,8 @@ public class AdminManager
                         shoe.Brand = newBrand;
                         Console.WriteLine("Color updated successfully.");
                     }
+
+                    ProductRepository.SaveProducts();
                     break;
                 case 5:
                     Console.WriteLine("Enter the new Size: ");
@@ -217,6 +220,7 @@ public class AdminManager
                         Console.WriteLine("Size Stock.");
                     }
 
+                    ProductRepository.SaveProducts();
                     break;
                 case 6:
                     editExit = true;
