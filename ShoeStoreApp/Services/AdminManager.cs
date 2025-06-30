@@ -83,6 +83,7 @@ public class AdminManager
         });
 
         ProductRepository.SaveProducts();
+        ProductRepository.SaveProducts();
         Console.WriteLine("✅ Product added.");
     }
 
@@ -109,6 +110,7 @@ public class AdminManager
         {
             Console.WriteLine($"Shoe not found with ID {id}");
         }
+        ProductRepository.SaveProducts();
     }
 
     private void EditProduct()
@@ -230,6 +232,7 @@ public class AdminManager
                     break;
             }
         }
+        ProductRepository.SaveProducts();
     }
 
     private void ViewAllProducts()

@@ -87,9 +87,11 @@ public class StoreManager
             item.Shoe.InStock -= item.Quantity;
         }
 
-        ProductRepository.SaveProducts(); // ذخیره به فایل
+        ProductRepository.SaveProducts(); 
         user.Cart.Clear();
         Console.WriteLine($"✅ Payment complete. Total: {total} Toman");
+        ProductRepository.SaveProducts();
+
     }
 
 

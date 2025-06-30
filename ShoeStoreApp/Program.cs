@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        ProductRepository.LoadProducts(); // مرحله 1: بارگذاری محصولات از فایل قبل از هر چیز
+        ProductRepository.LoadProducts();
 
         Console.WriteLine("Enter your Mode : \n1. Admin \n2. User");
         int mode = Convert.ToInt32(Console.ReadLine());
