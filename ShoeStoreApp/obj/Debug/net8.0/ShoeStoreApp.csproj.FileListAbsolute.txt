@@ -12,3 +12,4 @@ E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\refint\ShoeStoreApp.dll
 E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.pdb
 E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.genruntimeconfig.cache
 E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ref\ShoeStoreApp.dll
+E:\ShoeStoreApp\ShoeStoreApp\obj\Debug\net8.0\ShoeStoreApp.sourcelink.json
